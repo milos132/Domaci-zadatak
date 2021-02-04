@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+typedef struct
+{
+  int x;
+  int y;
+}Tacka;
+
+double rastojanje(Tacka A, Tacka B)
+{
+  int dx = B.x - A.x;
+  int dy = B.y - A.y;
+  return sqrt(dx*dx + dy*dy);
+}
+
+double PTrougla(double a, double b, double c)
+{
+  double s = (a + b + c) / 2;
+  return sqrt(s*(s-a)*(s-b)*(s-c));
+}
+int main() 
+{
+  int x,y;
+    printf("Unesite kordinate tacke A\n");
+    scanf("%d%d",&x,&y);
+    Tacka A={x,y};
+    printf("Unesite kordinate tacke B\n");
+    scanf("%d%d",&x,&y);
+    Tacka B={x,y};
+    printf("Unesite kordinate tacke C\n");
+    scanf("%d%d",&x,&y);
+    Tacka C={x,y};
+
+    double a = rastojanje(A,B);
+    double b = rastojanje(B,C);
+    double c = rastojanje(A,C);
+
+    double P = PTrougla(a,b,c);
+    printf("Povrsina trougla je: %.2f necega^2", P);
+  return 0;
+}
